@@ -2,7 +2,7 @@
 provider "google" {  
   version = "~> 2.18.0"
   region  = var.region
-  credentials = file("./gcp/myproject-221121-1e8574b3cdbf.json")
+  credentials = file("./gcp/credentials.json")
   project     = var.project_id
 }
 
