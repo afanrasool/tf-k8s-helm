@@ -13,3 +13,11 @@ variable "region" {
 variable "zone" {
   description = "The zone"
 }
+
+variable "ip_range_pods" {
+  description = "The range to use for pods"
+}
+
+variable "ip_range_services" {
+  description = "The range to use for services"
+}

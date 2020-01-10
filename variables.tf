@@ -13,3 +13,11 @@ variable "region" {
 variable "zone" {
   description = "The zone to host the cluster in"
 }
+
+variable "ip_range_pods" {
+  description = "The ip range for pods"
+}
+
+variable "ip_range_services" {
+  description = "The ip range for services"
+}

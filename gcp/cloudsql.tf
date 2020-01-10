@@ -16,11 +16,11 @@ module "sql_db_mysql" {
 }
 
 # private sql connection not working yet
-# module "private-service-access" {
-#   source      = "GoogleCloudPlatform/sql-db/google//modules/private_service_access"
-#   project_id  = var.project_id
-#   vpc_network = module.vpc.network_name
-# }
+module "private-service-access" {
+  source      = "./terraform-google-sql-db/modules/private_service_access"
+  project_id  = var.project_id
+  vpc_network = "default"
+}
 
 # needed for k8s cloud proxy
 #resource "google_service_account" "sql-sa" {
