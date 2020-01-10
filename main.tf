@@ -11,7 +11,6 @@ module "gcp" {
   source   = "./gcp"
   project_id  = "${var.project_id}"
   region   = "${var.region}"
-  subnet_ip = "${var.subnet_ip}"
   cluster_name = "${var.cluster_name}"
   zone = "${var.zone}"
 }

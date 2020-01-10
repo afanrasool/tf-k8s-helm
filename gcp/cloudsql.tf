@@ -1,9 +1,9 @@
 module "sql_db_mysql" {
-  source           = "GoogleCloudPlatform/sql-db/google"
+  source           = "./terraform-google-sql-db/modules/mysql"
   project_id       = var.project_id
   region           = var.region
   zone             = var.zone
-  name             = "${var.cluster_name}"
+  name             = var.cluster_name
   database_version = "MYSQL_5_7" 
 
 
