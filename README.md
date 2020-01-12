@@ -61,6 +61,7 @@ The provisioning part and the App deployment is segragated using modules. the `g
 - Terraform helm provider is using terraform version < v3. This meant I needed to set up Tiller with the required clusterrole. A step that could have been avoided if using Helm v3.
 
 - One or two parameters have been hard codes. Even though these are fairly static, the best practice would be to variablize these as well.
+- The permissions of the service account have not been narrowed down to specifically whats needed and have been kept wide to simplify things. This is against best practices and was only done for the interest of time and testing purposes.
 
 
 
