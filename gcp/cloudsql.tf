@@ -1,11 +1,27 @@
+resource "random_id" "name" {
+  byte_length = 5
+}
+
+locals {
+  mysql_version = "5.7"
+}
+
+
 module "sql_db_mysql" {
   source           = "./terraform-google-sql-db/modules/mysql"
   project_id       = var.project_id
   region           = var.region
-  zone             = var.zone
-  name             = var.cluster_name
+  zone             = "c"
+  name             = "${var.cluster_name_suffix}-${random_id.name.hex}"
   database_version = "MYSQL_5_7" 
 
+# private sql connection not working yet
+  ip_configuration = {
+     ipv4_enabled        = true
+     require_ssl         = false
+     private_network     = "projects/${var.project_id}/global/networks/vpc-${var.cluster_name_suffix}"
+     authorized_networks = []
+  }
 
   database_flags = [
     {
@@ -16,11 +32,11 @@ module "sql_db_mysql" {
 }
 
 # private sql connection not working yet
-module "private-service-access" {
-  source      = "./terraform-google-sql-db/modules/private_service_access"
-  project_id  = var.project_id
-  vpc_network = "default"
-}
+ module "private-service-access" {
+   source      = "GoogleCloudPlatform/sql-db/google//modules/private_service_access"
+   project_id  = var.project_id
+   vpc_network = "default"
+ }
 
 # needed for k8s cloud proxy
 #resource "google_service_account" "sql-sa" {
@@ -39,6 +55,6 @@ module "private-service-access" {
 
 # needed for k8s cloud proxy, depend on SA creation
 #resource "google_project_iam_member" "sql-sa-binding" {
-# role    = "roles/cloudsql.client"
+#  role    = "roles/cloudsql.client"
 #  member  = "serviceAccount:${google_service_account.sql-sa.email}"
 #}

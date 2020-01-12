@@ -1,6 +1,9 @@
 project_id = "myproject-221121"
-cluster_name= "afanr"
+subnet_ip = "10.254.0.0/24"
+cluster_name_suffix = "afanr"
+ip_range_pods = "podrange1"
+ip_range_services = "servicerange1"
+secondary_subnet_ip_pod = "172.16.0.0/22"
+secondary_subnet_ip_svc = "172.20.0.0/24"
 region = "us-east1"
-zone = "c"
-ip_range_pods = "podrange"
-ip_range_services = "svcrange"
+zones = ["us-east1-c"]
