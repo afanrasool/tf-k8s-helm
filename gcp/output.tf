@@ -76,15 +76,10 @@ output "routes" {
 output "sql_password" {
   sensitive = true
   value = module.sql_db_mysql.generated_user_password
-} 
-
-##needed for k8s module to connect to cloud sql. public connection
-output "instance_connection_name" {
-  value = module.sql_db_mysql.instance_connection_name
 }
 
-##needed for k8s module to connect to cloud sql
-#output "service_account_key" {
-#  sensitive = true
-#  value = google_service_account_key.sql-key.private_key
-#}
+output "sql_host" {
+  value = module.sql_db_mysql.private_address
+} 
+
+

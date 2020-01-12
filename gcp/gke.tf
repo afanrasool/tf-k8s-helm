@@ -9,7 +9,8 @@ provider "google" {
 
 #New VPC for GKE
 module "vpc" {
-    source  = "github.com/afanrasool/terraform-google-network"
+    source  = "terraform-google-modules/network/google"
+    version = "~> 1.0.0"
 
     project_id   = var.project_id
     network_name = "vpc-${var.cluster_name_suffix}"
@@ -53,7 +54,7 @@ module "vpc" {
 
 #New GKE cluster
 module "gke" {
-  source                 = "github.com/terraform-google-modules/terraform-google-kubernetes-engine"
+  source                 = "terraform-google-modules/kubernetes-engine/google"
   project_id             = var.project_id
   name                   = "cluster${var.cluster_name_suffix}"
   regional               = false
@@ -69,9 +70,9 @@ module "gke" {
   node_pools = [
     {
       name               = "${var.cluster_name_suffix}-pool"
-      machine_type       = "n1-standard-1"
+      machine_type       = "n1-standard-2"
       min_count          = 1
-      max_count          = 1
+      max_count          = 4
       local_ssd_count    = 0
       disk_size_gb       = 100
       disk_type          = "pd-standard"

@@ -10,18 +10,13 @@ variable "ca_certificate" {
   description = "CA certificate to connect to GKE"
 }
 
-#cloud sql connection name. public connection
-variable "instance_connection_name" {
-  description = "SQL instance connection name"
-}
 
 #Cloud SQL password
 variable "generated_user_password" {
 
 }
 
-#Cloud SQL service account
-#variable "service_account_key"{}
+#Private ip address of cloudsql
+variable "sql_private_ip" {
 
-
-
+}

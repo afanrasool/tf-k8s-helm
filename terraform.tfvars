@@ -7,3 +7,5 @@ secondary_subnet_ip_pod = "172.16.0.0/22"
 secondary_subnet_ip_svc = "172.20.0.0/24"
 region = "us-east1"
 zones = ["us-east1-c"]
+#key_file = "certs/key.pem"
+#cert_file = "certs/fullchain.pem"

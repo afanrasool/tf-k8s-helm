@@ -29,8 +29,8 @@ variable "secondary_subnet_ip_pod" {
 
 variable "secondary_subnet_ip_svc" {
     description = "The CIDR for the new subnet"
-}  
-
+}
+  
 variable "zones" {
      description = "The zones to build GKE. This is a remediation of some zones showing PROVISIONING"
 }  
