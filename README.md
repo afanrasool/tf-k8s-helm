@@ -34,7 +34,7 @@ The provisioning part and the App deployment is segragated using modules. the `g
 ### //instructions to deploy from this repo
 
 #### Pre-requisites
--   A service account for Terraform in GCP. Following roles have been tested to work with this setup : `Kubernetes Admin` , `Editor` , `Security Admin`.
+-   A service account for Terraform in GCP. Following roles have been tested to work with this setup : `Kubernetes Admin` , `Editor` , `Security Admin`,`Network Admin`.
 -   Google Cloud SDK
 -   Terraform 0.12
 -   Store the keyfile for the service account created above in `gcp/credentials.json`
@@ -56,6 +56,8 @@ The provisioning part and the App deployment is segragated using modules. the `g
   ```bash
   terraform apply
   ```
+
+  At the end of the run terraform would output the external IP for the Wordpress App, along with the private sql ip. Alternatively, `terraform output` can be used to display these again.
 
 ### //caveats
 - Terraform helm provider is using terraform version < v3. This meant I needed to set up Tiller with the required clusterrole. A step that could have been avoided if using Helm v3.

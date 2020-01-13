@@ -1,4 +1,4 @@
-project_id = "myproject-221121"
+project_id = "warm-classifier-264615"
 subnet_ip = "10.254.0.0/24"
 cluster_name_suffix = "afanr"
 ip_range_pods = "podrange1"
